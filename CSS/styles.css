@@ -1,0 +1,24 @@
+#maindiv {
+    height: 360px;
+    width: 360px;
+    display: flex;
+    flex-wrap: wrap;
+    /* margin: auto;
+    padding: 20%; */
+}
+
+#maindiv div{
+    height: 60px;
+    width: 60px;
+}
+
+body{
+    background-image: url("IMG_4233.JPG");
+    background-color: rgb(252, 233, 241);
+    background-repeat: no-repeat;
+    /* background-size: 120vw; */
+    background-size: cover; 
+    
+    /* font-family: 'Playball', cursive; */
+}
+

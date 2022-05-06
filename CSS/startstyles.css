@@ -1,0 +1,25 @@
+body{
+    /* background-image: url("IMG_4229.JPG"); */
+    background-image: url("IMG_4234.JPG");
+    background-color: rgb(252, 233, 241);
+    background-repeat: no-repeat;
+    /* background-size: 120vw; */
+    background-size: cover; 
+    background-attachment: fixed;
+    font-family: 'Playball', cursive;
+}
+
+#header h1{
+    font-family: 'Shrikhand', cursive;
+    font-size: 100px;
+}
+
+div{
+    display: flex;
+    
+    justify-content: center;
+}
+
+h2{
+    font-size: 50px ;
+}

@@ -1,0 +1,34 @@
+#maindiv {
+    height: 360px;
+    width: 360px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#maindiv div{
+    height: 60px;
+    width: 60px;
+}
+
+body{
+    background-image: url("IMG_4232.JPG");
+    background-color: rgb(252, 233, 241);
+    background-repeat: no-repeat;
+    /* background-size: 120vw; */
+    background-size: cover; 
+   
+    
+    /* font-family: 'Playball', cursive; */
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-image: url("IMG_4232.JPG");
+        background-color: rgb(252, 233, 241);
+        background-repeat: no-repeat;
+        /* background-size: 120vw; */
+        background-size: cover; 
+    }
+  }
+
+
