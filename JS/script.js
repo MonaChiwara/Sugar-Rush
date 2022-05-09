@@ -1,14 +1,59 @@
+// ==== TIMER ====
+
+function startTimer(duration, display, callback) {
+  var timer = duration,
+    minutes, seconds;
+
+  var myInterval = setInterval(function() {
+    minutes = parseInt(timer / 60, 10)
+    seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.textContent = minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      timer = duration;
+      
+      // clear the interal
+      clearInterval(myInterval);
+
+      // use the callback
+      if(callback) {
+          callback();
+      }
+    }
+  }, 1000);
+}
+
+window.onload = function() {
+  let time = 30,
+    display = document.querySelector('#timerOne');
+  startTimer(time, display, function() { Swal.fire ('TIME UP, NEXT PLAYER'); });
+};
+  
+
+
 const bigBox = document.querySelector('#maindiv')
 const width = 6
 const boxes = []
+const scoreBoard = document.querySelector('#scoreOne')
+let score = 0
+
 
 const candy = [
     'red',
     'yellow',
     'blue',
     'green',
-    'orange'
+    'orange',
+    'purple',
+    'pink',
 ]
+
+
+
 
 function gameBoard () {
     for (let i = 0; i < width*width; i++ ){
@@ -24,6 +69,7 @@ function gameBoard () {
 
 gameBoard()
 
+
 let candyBeingDragged
 let candyBeingReplaced
 let boxIdBeingDragged
@@ -34,106 +80,84 @@ boxes.forEach(smallBox => smallBox.addEventListener('dragend', dragEnd))
 boxes.forEach(smallBox => smallBox.addEventListener('dragover', dragOver))
 boxes.forEach(smallBox => smallBox.addEventListener('dragenter', dragEnter))
 boxes.forEach(smallBox => smallBox.addEventListener('dragleave', dragLeave))
-boxes.forEach(smallBox => smallBox.addEventListener('dragdrop', dragDrop))
+boxes.forEach(smallBox => smallBox.addEventListener('drop', dragDrop))
 
 function dragStart(e){
-  console.log(e.target.id)
     candyBeingDragged = this.style.backgroundColor
     boxIdBeingDragged = parseInt(this.id)
 }
 
-
 function dragOver(e) {
-  // console.log(e.target.id)
-    
+  e.preventDefault()
 }
 
 function dragEnter(e) {
     e.preventDefault()
 }
 
-function dragLeave(e) {
-  console.log(e.target.id)
-    
-
+function dragLeave() {
+    this.style.backgroundColor = ''
 }
 
 function dragDrop(e) {
-  console.log(e.target)
     candyBeingReplaced = this.style.backgroundColor
     boxIdBeingReplaced = parseInt(this.id)
+    this.style.backgroundColor = candyBeingDragged
     boxes[boxIdBeingDragged].style.backgroundColor = candyBeingReplaced
 }
 
-function dragEnd(e){
-  // console.log(e.target)
 
+function dragEnd() {
 
 }
 
+// for row of Three
+function checkRowForThree() {
+  for (i = 0; i < 34; i ++) {
+    let rowOfThree = [i, i+1, i+2]
+    let decidedColor = boxes[i].style.backgroundColor
+    const isBlank = boxes[i].style.backgroundColor === ''
 
-
-
-
-//timer
-// const startingTime = 1
-// let time = startingTime * 60
-
-
-// const timer = document.querySelector('#timer')
-
-// setInterval(updateTimer, 1000) 
-
-// function updateTimer(){
-//     const minutes = Math.floor (time/60)
-//     let seconds = time % 60
-
-//     seconds = seconds < 10 ? "0" + seconds : seconds
-
-//     timer.innerHTML = `${minutes}: ${seconds}`
-
-//     time --
-
-//     if (time-- < 0) {
-//         clearInterval(x)
-//         document.querySelector('#timer').innerHTML = "GAME OVER"
-//     }
-
-
-// }    
-
-function startTimer(duration, display, callback) {
-    var timer = duration,
-      minutes, seconds;
-  
-    var myInterval = setInterval(function() {
-      minutes = parseInt(timer / 60, 10)
-      seconds = parseInt(timer % 60, 10);
-  
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-  
-      display.textContent = minutes + ":" + seconds;
-  
-      if (--timer < 0) {
-        timer = duration;
-        
-        // clear the interal
-        clearInterval(myInterval);
-  
-        // use the callback
-        if(callback) {
-            callback();
-        }
-      }
-    }, 1000);
+    if(rowOfThree.every(index => boxes[index].style.backgroundColor === decidedColor && !isBlank)) {
+      score += 3
+      scoreBoard.innerHTML = score
+      rowOfThree.forEach(index => {
+      boxes[index].style.backgroundColor = ''
+      })
+    }
   }
-  
-  window.onload = function() {
-    let time = 30,
-      display = document.querySelector('#timer');
-    startTimer(time, display, function() { Swal.fire ('TIME UP, NEXT PLAYER'); });
-  };
+}
+checkRowForThree()
+
+// for row of Three
+function checkColumnForThree() {
+  for (i = 0; i < 24; i ++) {
+    let columnOfThree = [i, i+width, i+width*2]
+    let decidedColor = boxes[i].style.backgroundColor
+    const isBlank = boxes[i].style.backgroundColor === ''
+
+   
+    if(columnOfThree.every(index => boxes[index].style.backgroundColor === decidedColor && !isBlank)) {
+      score += 3
+      scoreBoard.innerHTML = score
+      columnOfThree.forEach(index => {
+      boxes[index].style.backgroundColor = ''
+      })
+    }
+  }
+}
+checkColumnForThree()
+
+window.setInterval(function(){
+  checkRowForThree()
+  checkColumnForThree()
+  }, 100)
+
+
+
+
+
+
   
 
   
