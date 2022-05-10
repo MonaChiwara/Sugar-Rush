@@ -1,10 +1,22 @@
+// // === START PAGE ===
+// const instructions = document.querySelector('#instructions')
+
+// instructions.addEventListener('click', displayInstructions)
+
+// function displayInstructions(){
+//   console.log('hi')
+//   // Swal.fire ('Clear the candies by swiping the candies in any direction to create sets of 3 matching candies. Each player has 30 seconds. The player with the highest score, wins.')
+// }
+
+
+
 // ==== TIMER ====
 
 function startTimer(duration, display, callback) {
-  var timer = duration,
+  let timer = duration,
     minutes, seconds;
 
-  var myInterval = setInterval(function() {
+  let myInterval = setInterval(function() {
     minutes = parseInt(timer / 60, 10)
     seconds = parseInt(timer % 60, 10);
 
@@ -16,10 +28,8 @@ function startTimer(duration, display, callback) {
     if (--timer < 0) {
       timer = duration;
       
-      // clear the interal
       clearInterval(myInterval);
 
-      // use the callback
       if(callback) {
           callback();
       }
@@ -43,13 +53,13 @@ let score = 0
 
 
 const candy = [
-    'red',
-    'yellow',
-    'blue',
-    'green',
-    'orange',
-    'purple',
-    'pink',
+    'url(images/red.png)',
+    'url(images/yellow.png)',
+    'url(images/blue.png)',
+    'url(images/green.png)',
+    'url(images/orange.png)',
+    'url(images/purple.png)',
+    'url(images/pink.png)',
 ]
 
 
@@ -61,7 +71,7 @@ function gameBoard () {
         smallBox.setAttribute('draggable', true)
         smallBox.setAttribute('id', i)
         let randomCandy = Math.floor(Math.random() * candy.length)
-        smallBox.style.backgroundColor = candy[randomCandy]
+        smallBox.style.backgroundImage = candy[randomCandy]
         bigBox.appendChild(smallBox)
         boxes.push(smallBox)
     }
@@ -83,7 +93,7 @@ boxes.forEach(smallBox => smallBox.addEventListener('dragleave', dragLeave))
 boxes.forEach(smallBox => smallBox.addEventListener('drop', dragDrop))
 
 function dragStart(e){
-    candyBeingDragged = this.style.backgroundColor
+    candyBeingDragged = this.style.backgroundImage
     boxIdBeingDragged = parseInt(this.id)
 }
 
@@ -96,14 +106,14 @@ function dragEnter(e) {
 }
 
 function dragLeave() {
-    this.style.backgroundColor = ''
+    this.style.backgroundImage = ''
 }
 
 function dragDrop(e) {
-    candyBeingReplaced = this.style.backgroundColor
+    candyBeingReplaced = this.style.backgroundImage
     boxIdBeingReplaced = parseInt(this.id)
-    this.style.backgroundColor = candyBeingDragged
-    boxes[boxIdBeingDragged].style.backgroundColor = candyBeingReplaced
+    this.style.backgroundImage = candyBeingDragged
+    boxes[boxIdBeingDragged].style.backgroundImage = candyBeingReplaced
 }
 
 
@@ -115,14 +125,14 @@ function dragEnd() {
 function checkRowForThree() {
   for (i = 0; i < 34; i ++) {
     let rowOfThree = [i, i+1, i+2]
-    let decidedColor = boxes[i].style.backgroundColor
-    const isBlank = boxes[i].style.backgroundColor === ''
+    let decidedColor = boxes[i].style.backgroundImage
+    const isBlank = boxes[i].style.backgroundImage === ''
 
-    if(rowOfThree.every(index => boxes[index].style.backgroundColor === decidedColor && !isBlank)) {
-      score += 3
+    if(rowOfThree.every(index => boxes[index].style.backgroundImage === decidedColor && !isBlank)) {
+      score += 1
       scoreBoard.innerHTML = score
       rowOfThree.forEach(index => {
-      boxes[index].style.backgroundColor = ''
+      boxes[index].style.backgroundImage = ''
       })
     }
   }
@@ -133,15 +143,16 @@ checkRowForThree()
 function checkColumnForThree() {
   for (i = 0; i < 24; i ++) {
     let columnOfThree = [i, i+width, i+width*2]
-    let decidedColor = boxes[i].style.backgroundColor
-    const isBlank = boxes[i].style.backgroundColor === ''
+    let decidedColor = boxes[i].style.backgroundImage
+    
+    const isBlank = boxes[i].style.backgroundImage === ''
 
    
-    if(columnOfThree.every(index => boxes[index].style.backgroundColor === decidedColor && !isBlank)) {
-      score += 3
+    if(columnOfThree.every(index => boxes[index].style.backgroundImage === decidedColor && !isBlank)) {
+      score += 1
       scoreBoard.innerHTML = score
       columnOfThree.forEach(index => {
-      boxes[index].style.backgroundColor = ''
+      boxes[index].style.backgroundImage = ''
       })
     }
   }
@@ -152,7 +163,6 @@ window.setInterval(function(){
   checkRowForThree()
   checkColumnForThree()
   }, 100)
-
 
 
 

@@ -1,6 +1,6 @@
 body{
     /* background-image: url("IMG_4229.JPG"); */
-    background-image: url("IMG_4234.JPG");
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url("IMG_4234.JPG");
     background-color: rgb(252, 233, 241);
     background-repeat: no-repeat;
     /* background-size: 120vw; */
@@ -9,10 +9,26 @@ body{
     font-family: 'Playball', cursive;
 }
 
-#header h1{
-    font-family: 'Shrikhand', cursive;
-    font-size: 100px;
+#header{
+    height: 250px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #f6ff00, 0 0 10px #fcc3ea, 0 0 10px #fcc3ea, 0 0 20px #f6ff00, 0 0 30px #f6ff00;
+    color: rgb(253, 25, 146);
+    font-size: 50px;
+    /* background-color: #fcc3ea; */
 }
+
+#anotherHeader h2{
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #f6ff00, 0 0 10px #fcc3ea, 0 0 10px #fcc3ea, 0 0 20px #f6ff00, 0 0 30px #f6ff00;
+    color: rgb(237, 31, 141);
+    font-size: 50px;
+}
+
+
 
 div{
     display: flex;
@@ -20,6 +36,36 @@ div{
     justify-content: center;
 }
 
-h2{
-    font-size: 50px ;
+p{
+    font-family: 'Luckiest Guy', cursive;
+    text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #f6ff00, 0 0 10px #fcc3ea, 0 0 10px #fcc3ea, 0 0 20px #f6ff00, 0 0 30px #f6ff00;
+    color: rgb(233, 32, 139);
+    font-size: 30px;  
+}
+
+/* #instructions{
+    font-family: 'Shrikhand', cursive;
+    height: 250px;
+    /* background-color: #fcc3ea; */
+    /* text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #f6ff00, 0 0 10px #fcc3ea, 0 0 10px #fcc3ea, 0 0 20px #f6ff00, 0 0 30px #f6ff00; */
+    /* color: rgb(237, 31, 141);
+    font-size: 50px;
+} */ 
+
+button{
+    height: 50px;
+    color: rgb(253, 25, 146);
+    background-color: #fee7f7;
+    font-family: 'Shrikhand', cursive;
+    font-size: 20px ;
+    border: #fee7f7;
+}
+
+a{
+   text-decoration: none;
+   color: rgb(253, 25, 146);
+}
+
+#play{
+    height: 30px;
 }

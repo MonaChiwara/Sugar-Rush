@@ -1,6 +1,7 @@
 .center{
     display: flex;
-    justify-content: center; 
+    justify-content: center;
+   
 }
 
 #maindiv {
@@ -8,6 +9,9 @@
     width: 380px;
     display: flex;
     flex-wrap: wrap;
+    /* margin: auto;
+    padding: 20%; */
+    /* border: #16cf42 solid; */
 }
 
 #maindiv div{
@@ -17,65 +21,62 @@
 }
 
 body{
-    background-image: url("IMG_4232.JPG");
+    background-image: url("IMG_4233.JPG");
     background-color: rgb(252, 233, 241);
     background-repeat: no-repeat;
     /* background-size: 120vw; */
     background-size: cover; 
-   
     
     /* font-family: 'Playball', cursive; */
 }
-/* 
-@media only screen and (max-width: 600px) {
-    body {
-        background-image: url("IMG_4232.JPG");
-        background-color: rgb(252, 233, 241);
-        background-repeat: no-repeat;
-        /* background-size: 120vw; */
-        /* background-size: cover; 
-    }
-  } */ 
 
-  #playerTwo{
+/* #firstDiv{
+    height: 500px;
+    width: 400px;
+    background-color: aliceblue;
+    /* display: flex;
+    justify-content: center; */
+    /* border: red 5px; */
+/* } */ 
+
+#playerOne{
     /* height: 100px; */
     margin-left: auto;
     margin-right: auto;
     font-family: 'Luckiest Guy', cursive;
     text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #f6ff00, 0 0 10px #fcc3ea, 0 0 10px #fcc3ea, 0 0 20px #f6ff00, 0 0 30px #f6ff00;
-    color: rgb(33, 25, 253);
+    color: rgb(253, 25, 25);
     font-size: 30px;
     /* background-color: #fcc3ea; */
    
 }
 
-#timerTwo{
+#timerOne{
     font-family: 'Luckiest Guy', cursive;
     text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #f6ff00, 0 0 10px #fcc3ea, 0 0 10px #fcc3ea, 0 0 20px #f6ff00, 0 0 30px #f6ff00;
-    color: rgb(33, 25, 253);
+    color: rgb(253, 25, 25);
     font-size: 30px;
     
 }
 
-#scoreTwo{
+#scoreOne{
     text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #f6ff00, 0 0 10px #fcc3ea, 0 0 10px #fcc3ea, 0 0 20px #f6ff00, 0 0 30px #f6ff00;
-    color: rgb(33, 25, 253);
+    color: rgb(253, 25, 25);
 }
 
-#scoresTwo{
+#scoresOne{
     font-family: 'Luckiest Guy', cursive;
     text-shadow: 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #fff, 0 0 5px #f6ff00, 0 0 10px #fcc3ea, 0 0 10px #fcc3ea, 0 0 20px #f6ff00, 0 0 30px #f6ff00;
-    color: rgb(33, 25, 253);
+    color: rgb(253, 25, 25);
     font-size: 50px;
 }
 button{
     height: 50px;
-    color: rgb(33, 25, 253);
+    color: rgb(253, 25, 25);
     /* background-color: #ffa2a2; */
     font-family: 'Shrikhand', cursive;
     font-size: 20px ;
-    border: #f6ff00;
-    border-radius: 10px;
+    border: #16cf42;
 
 }
 
@@ -84,9 +85,6 @@ a{
     color: rgb(253, 25, 25);
  }
 
- #scoreReveal{
+ #play{
     margin-left: 1200px;
-
- }
-
-
+}

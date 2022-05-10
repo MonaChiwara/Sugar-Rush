@@ -1,4 +1,4 @@
-// ==== TIMER ====
+// ==== TIMER FOR FIST GAME ====
 
 function startTimer(duration, display, callback) {
   var timer = duration,
@@ -38,17 +38,17 @@ const bigBox = document.querySelector('#maindiv')
 const width = 6
 const boxes = []
 const scoreBoard = document.querySelector('#scoreTwo')
-let score = 0
+let scoreTwo = 0
 
 
 const candy = [
-    'red',
-    'yellow',
-    'blue',
-    'green',
-    'orange',
-    'purple',
-    'pink',
+  'url(images/red.png)',
+  'url(images/yellow.png)',
+  'url(images/blue.png)',
+  'url(images/green.png)',
+  'url(images/orange.png)',
+  'url(images/purple.png)',
+  'url(images/pink.png)',
 ]
 
 
@@ -60,7 +60,7 @@ function gameBoard () {
         smallBox.setAttribute('draggable', true)
         smallBox.setAttribute('id', i)
         let randomCandy = Math.floor(Math.random() * candy.length)
-        smallBox.style.backgroundColor = candy[randomCandy]
+        smallBox.style.backgroundImage = candy[randomCandy]
         bigBox.appendChild(smallBox)
         boxes.push(smallBox)
     }
@@ -82,7 +82,7 @@ boxes.forEach(smallBox => smallBox.addEventListener('dragleave', dragLeave))
 boxes.forEach(smallBox => smallBox.addEventListener('drop', dragDrop))
 
 function dragStart(e){
-    candyBeingDragged = this.style.backgroundColor
+    candyBeingDragged = this.style.backgroundImage
     boxIdBeingDragged = parseInt(this.id)
 }
 
@@ -95,14 +95,14 @@ function dragEnter(e) {
 }
 
 function dragLeave() {
-    this.style.backgroundColor = ''
+    this.style.backgroundImage = ''
 }
 
 function dragDrop(e) {
-    candyBeingReplaced = this.style.backgroundColor
+    candyBeingReplaced = this.style.backgroundImage
     boxIdBeingReplaced = parseInt(this.id)
-    this.style.backgroundColor = candyBeingDragged
-    boxes[boxIdBeingDragged].style.backgroundColor = candyBeingReplaced
+    this.style.backgroundImage = candyBeingDragged
+    boxes[boxIdBeingDragged].style.backgroundImage = candyBeingReplaced
 }
 
 
@@ -114,33 +114,33 @@ function dragEnd() {
 function checkRowForThree() {
   for (i = 0; i < 34; i ++) {
     let rowOfThree = [i, i+1, i+2]
-    let decidedColor = boxes[i].style.backgroundColor
-    const isBlank = boxes[i].style.backgroundColor === ''
+    let decidedColor = boxes[i].style.backgroundImage
+    const isBlank = boxes[i].style.backgroundImage === ''
 
-    if(rowOfThree.every(index => boxes[index].style.backgroundColor === decidedColor && !isBlank)) {
-      score += 3
-      scoreBoard.innerHTML = score
+    if(rowOfThree.every(index => boxes[index].style.backgroundImage === decidedColor && !isBlank)) {
+      scoreTwo += 1
+      scoreBoard.innerHTML = scoreTwo
       rowOfThree.forEach(index => {
-      boxes[index].style.backgroundColor = ''
+      boxes[index].style.backgroundImage = ''
       })
     }
   }
 }
 checkRowForThree()
 
-// for row of Three
+// for column of Three
 function checkColumnForThree() {
   for (i = 0; i < 24; i ++) {
     let columnOfThree = [i, i+width, i+width*2]
-    let decidedColor = boxes[i].style.backgroundColor
-    const isBlank = boxes[i].style.backgroundColor === ''
+    let decidedColor = boxes[i].style.backgroundImage
+    const isBlank = boxes[i].style.backgroundImage === ''
 
    
-    if(columnOfThree.every(index => boxes[index].style.backgroundColor === decidedColor && !isBlank)) {
-      score += 3
-      scoreBoard.innerHTML = score
+    if(columnOfThree.every(index => boxes[index].style.backgroundImage === decidedColor && !isBlank)) {
+      scoreTwo += 1
+      scoreBoard.innerHTML = scoreTwo
       columnOfThree.forEach(index => {
-      boxes[index].style.backgroundColor = ''
+      boxes[index].style.backgroundImage = ''
       })
     }
   }
@@ -154,12 +154,25 @@ window.setInterval(function(){
 
 
 
+// ====== WINNER ====
+// Revealing the winner
+// use if statement to compare scores
 
+let firstPlayer = document.querySelector('#scoreOne')
+let secondPlayer = document.querySelector('#scoreTwo')  
 
-
-  
-
-  
+const scoreBtn = document.querySelector('#scoreReveal')
+scoreBtn.addEventListener('click', reveal)
+function reveal(){
+  if(firstPlayer > secondPlayer){
+        Swal.fire ('Player 1 won')
+    }
+    else{
+        Swal.fire ('Player 2 won')
+    }  
+  console.log('im trying my best')
+ 
+}
 
 
 
