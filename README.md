@@ -7,11 +7,14 @@ Growing up, my family loved playing Candy Crush, so when the time came to choose
 Game Goals :
 
 Must be a two-player browser game - is a two player
+
 A winning state - most matches of 3
+
 A lose state - less matches
+
 A way to keep playing if the game is not over - restart
 
-Features I'm most proud of - Drag and Drop
+Features I'm most proud of: Drag and Drop
 
 Challenges I faced - trying to come up with a way to get input from the first player and compare it with the second player
 
